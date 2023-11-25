@@ -1,5 +1,6 @@
 # Hybrid CoreXY Kinematic
 - feature complete Hybrid CoreXY Kinematic
+- inverted Hybrid CoreXY Kinematic
 - allows probing with both Toolheads for IDEX configurations
 - Single toolhead AWD power with a AB motor configuration
 
