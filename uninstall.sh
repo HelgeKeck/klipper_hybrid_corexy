@@ -29,17 +29,11 @@ function stop_klipper {
     fi
 }
 
-function backup_original_kinematics {
+function restore_kinematics {
     if [ -d "${KINEMATICS}" ]; then
         if [ -d "${BACKUP}" ]; then
-            echo -e "${BACKUP} already exists."
-        else
-            mkdir "${BACKUP}"
-            echo -e "${BACKUP} created."
-        fi
-        if [ -d "${BACKUP}" ]; then
-            cp "${KINEMATICS}/hybrid_corexy.py" "${BACKUP}/hybrid_corexy.py"
-            echo -e "original kinematics backup in ${BACKUP}"
+            cp "${BACKUP}/hybrid_corexy.py" "${KINEMATICS}/hybrid_corexy.py"
+            echo -e "original kinematics restored."
         else
             echo -e "ERROR: ${BACKUP} not found, something went wrong."
             exit 1
@@ -50,22 +44,11 @@ function backup_original_kinematics {
     fi
 }
 
-function link_kinematics {
-    rm -f "${KINEMATICS}/hybrid_corexy.py"
-    ln -sf "${SRCDIR}/klippy/kinematics/hybrid_corexy.py" "${KINEMATICS}/hybrid_corexy.py"
-}
-
-function git_exclude {
-    git update-index --skip-worktree "${KINEMATICS}/hybrid_corexy.py"
-}
-
-echo -e "Hybrid CoreXY Kinematic"
+echo -e "Restore Hybrid CoreXY Kinematic"
 stop_klipper
-backup_original_kinematics
-link_kinematics
-git_exclude
+restore_kinematics
 start_klipper
 echo -e ""
-echo -e "Installation finished!"
+echo -e "Restore finished!"
 echo -e ""
 exit 0
