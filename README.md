@@ -1,6 +1,4 @@
 # Klipper Hybrid CoreXY Kinematic
-This is a unofficial and temporary RatOS V2.X IDEX Implementation. Consider it as beta or alpha. 
-Macros are based on [Mikkel Schmidt`s](https://github.com/miklschmidt) work and have been modified and extended by [Helge Keck](https://github.com/HelgeKeck).
 
 # Install
 ```
