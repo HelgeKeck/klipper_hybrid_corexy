@@ -13,11 +13,11 @@ bash ~/klipper_hybrid_corexy/install.sh
 
 # Update
 ```ini
-[update_manager IDEX]
+[update_manager HYBRID_COREXY]
 type: git_repo
 primary_branch: main
-path: ~/vcore-idex
-origin: https://github.com/HelgeKeck/vcore-idex.git
+path: ~/klipper_hybrid_corexy
+origin: https://github.com/HelgeKeck/klipper_hybrid_corexy.git
 managed_services:
 	klipper
 ```
