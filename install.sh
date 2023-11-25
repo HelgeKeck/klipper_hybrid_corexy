@@ -12,7 +12,8 @@ set -e
 SRCDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/ && pwd )"
 
 # Default Parameters
-KLIPPY_KINEMATICS="${HOME}/klipper/klippy/kinematics"
+KLIPPER="${HOME}/klipper"
+KINEMATICS="${HOME}/klipper/klippy/kinematics"
 
 function start_klipper {
     sudo systemctl restart klipper
@@ -27,19 +28,26 @@ function stop_klipper {
     fi
 }
 
-function link_klippy_kinematics {
-    if [ -d "${KLIPPY_KINEMATICS}" ]; then
-        rm -f "${KLIPPY_KINEMATICS}/hybrid_corexy.py"
-        ln -sf "${SRCDIR}/klippy/kinematics/hybrid_corexy.py" "${KLIPPY_KINEMATICS}/hybrid_corexy.py"
+function link_kinematics {
+    if [ -d "${KINEMATICS}" ]; then
+        rm -f "${KINEMATICS}/hybrid_corexy.py"
+        ln -sf "${SRCDIR}/klippy/kinematics/hybrid_corexy.py" "${KINEMATICS}/hybrid_corexy.py"
     else
-        echo -e "ERROR: ${KLIPPY_KINEMATICS} not found, please install Klipper first."
+        echo -e "ERROR: ${KINEMATICS} not found, please install Klipper first."
         exit 1
+    fi
+}
+
+function git_exclude {
+    if ! grep -q "${KINEMATICS}/hybrid_corexy.py" "${KLIPPER}/.git/info/exclude"; then
+        echo "${KINEMATICS}/hybrid_corexy.py" >> "${KLIPPER}/.git/info/exclude"
     fi
 }
 
 echo -e "Hybrid CoreXY Kinematic"
 stop_klipper
-link_klippy_kinematics
+link_kinematics
+git_exclude
 start_klipper
 echo -e ""
 echo -e "Installation finished!"
