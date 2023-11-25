@@ -32,13 +32,11 @@ function stop_klipper {
 function backup_original_kinematics {
     if [ -d "${KINEMATICS}" ]; then
         if [ -d "${BACKUP}" ]; then
-            echo -e "${BACKUP} already exists."
         else
             mkdir "${BACKUP}"
-            echo -e "${BACKUP} created."
         fi
         if [ -d "${BACKUP}" ]; then
-            cp "${KINEMATICS}/hybrid_corexy.py" "${BACKUP}/hybrid_corexy.py"
+            cp "${KINEMATICS}/hybrid_corexy.py" "${BACKUP}/"
             echo -e "original kinematics backup in ${BACKUP}"
         else
             echo -e "ERROR: ${BACKUP} not found, something went wrong."
