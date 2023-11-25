@@ -1,14 +1,13 @@
-# Klipper Hybrid CoreXY Kinematic
+# Hybrid CoreXY Kinematic
 
-# Install
+# Install 
 ```
 cd ~/
 git clone https://github.com/HelgeKeck/klipper_hybrid_corexy.git
 bash ~/klipper_hybrid_corexy/install.sh
 ```
 
-# Moonraker Update Manager
-- add the update manager entry to the moonraker.conf file in your config folder
+# Update
 ```ini
 [update_manager IDEX]
 type: git_repo
