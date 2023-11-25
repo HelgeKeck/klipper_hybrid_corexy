@@ -25,14 +25,14 @@ inverted: true
 ```
 
 # Motor Configurations
-Single Toolhead A Motor
+Single Toolhead A
 ```ini
 stepper_x
 stepper_y
 stepper_y1
 ```
 
-Single Toolhead AB Motor
+Single Toolhead AB
 ```ini
 stepper_x
 stepper_x1
