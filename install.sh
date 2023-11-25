@@ -55,15 +55,10 @@ function link_kinematics {
     ln -sf "${SRCDIR}/klippy/kinematics/hybrid_corexy.py" "${KINEMATICS}/hybrid_corexy.py"
 }
 
-function git_exclude {
-    git update-index --skip-worktree "${KINEMATICS}/hybrid_corexy.py"
-}
-
 echo -e "Hybrid CoreXY Kinematic"
 stop_klipper
 backup_original_kinematics
 link_kinematics
-git_exclude
 start_klipper
 echo -e ""
 echo -e "Installation finished!"
