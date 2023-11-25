@@ -12,7 +12,7 @@ git clone https://github.com/HelgeKeck/klipper_hybrid_corexy.git
 bash ~/klipper_hybrid_corexy/install.sh
 ```
 
-# Uninstall 
+# Restore original kinematics 
 ```
 bash ~/klipper_hybrid_corexy/uninstall.sh
 ```
