@@ -32,6 +32,7 @@ function stop_klipper {
 function restore_kinematics {
     if [ -d "${KINEMATICS}" ]; then
         if [ -d "${BACKUP}" ]; then
+            rm -f "${KINEMATICS}/hybrid_corexy.py"
             cp "${BACKUP}/hybrid_corexy.py" "${KINEMATICS}/hybrid_corexy.py"
             echo -e "original kinematics restored."
         else
