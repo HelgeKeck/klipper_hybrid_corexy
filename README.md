@@ -13,7 +13,7 @@ bash ~/klipper_hybrid_corexy/install.sh
 
 # Update
 ```ini
-[update_manager HYBRID_COREXY]
+[update_manager Hybrid_CoreXY]
 type: git_repo
 primary_branch: main
 path: ~/klipper_hybrid_corexy
