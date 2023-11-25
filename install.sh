@@ -39,9 +39,7 @@ function link_kinematics {
 }
 
 function git_exclude {
-    if ! grep -q "${KINEMATICS}/hybrid_corexy.py" "${KLIPPER}/.git/info/exclude"; then
-        echo "${KINEMATICS}/hybrid_corexy.py" >> "${KLIPPER}/.git/info/exclude"
-    fi
+    git update-index --skip-worktree "${KINEMATICS}/hybrid_corexy.py"
 }
 
 echo -e "Hybrid CoreXY Kinematic"
