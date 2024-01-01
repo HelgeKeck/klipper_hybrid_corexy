@@ -1,3 +1,4 @@
+#!/bin/bash
 # Prevent running as root.
 if [ ${UID} == 0 ]; then
     echo -e "DO NOT RUN THIS SCRIPT AS 'root' !"
@@ -8,11 +9,7 @@ fi
 # Force script to exit if an error occurs
 set -e
 
-# Find SRCDIR from the pathname of this script
-SRCDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/ && pwd )"
-
 # Default Parameters
-KLIPPER="${HOME}/klipper"
 BACKUP="${HOME}/klipper_hybrid_corexy_backup"
 KINEMATICS="${HOME}/klipper/klippy/kinematics"
 
@@ -21,7 +18,7 @@ function start_klipper {
 }
 
 function stop_klipper {
-    if [ "$(sudo systemctl list-units --full -all -t service --no-legend | grep -F "klipper.service")" ]; then
+    if sudo systemctl list-units --full -all -t service --no-legend | grep -qF "klipper.service"; then
         sudo systemctl stop klipper
     else
         echo "Klipper service not found, please install Klipper first."
@@ -32,9 +29,8 @@ function stop_klipper {
 function restore_kinematics {
     if [ -d "${KINEMATICS}" ]; then
         if [ -d "${BACKUP}" ]; then
-            rm -f "${KINEMATICS}/hybrid_corexy.py"
-            cp "${BACKUP}/hybrid_corexy.py" "${KINEMATICS}/hybrid_corexy.py"
-            echo -e "original kinematics restored."
+            rm -f "${KINEMATICS}/ratos_hybrid_corexy.py"
+            echo -e "RatOS Hybrid CoreXY kinematics uninstalled."
         else
             echo -e "ERROR: ${BACKUP} not found, something went wrong."
             exit 1
@@ -45,7 +41,7 @@ function restore_kinematics {
     fi
 }
 
-echo -e "Restore Hybrid CoreXY Kinematic"
+echo -e "Uninstall RatOS Hybrid CoreXY Kinematics"
 stop_klipper
 restore_kinematics
 start_klipper
