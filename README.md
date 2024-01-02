@@ -40,7 +40,7 @@ managed_services:
 [printer]
 kinematics: ratos_hybrid_corexy
 
-[hybrid_corexy]
+[ratos_hybrid_corexy]
 inverted: true
 ```
 
