@@ -13,8 +13,7 @@ SRCDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/ && pwd )"
 function register_ratos_kinematics {
     EXT_NAME="ratos_hybrid_corexy"
     EXT_PATH=$(realpath "${SRCDIR}/klippy/kinematics/ratos_hybrid_corexy.py")
-    EXT_FILE="gcode_shell_command.py"
-    register_klippy_kinematic_extension $EXT_NAME "$EXT_PATH" $EXT_FILE
+    ratos extensions register klipper -k $EXT_NAME "$EXT_PATH"
 }
 
 echo -e "Installing RatOS Hybrid CoreXY Kinematic"
