@@ -1,8 +1,8 @@
 # Hybrid CoreXY Kinematic
-- feature complete Hybrid CoreXY Kinematic
-- inverted Hybrid CoreXY Kinematic
-- allows probing with both Toolheads for IDEX configurations
-- Single toolhead AWD power with a AB motor configuration
+- Feature complete Hybrid CoreXY Kinematic
+- Supports inverted Hybrid CoreXY Kinematic
+- Allows probing with both Toolheads for IDEX configurations
+- Single toolhead AWD power with an AB motor configuration
 - IDEX AWD
 
 # Install 
@@ -12,12 +12,18 @@ git clone https://github.com/HelgeKeck/klipper_hybrid_corexy.git
 bash ~/klipper_hybrid_corexy/install.sh
 ```
 
-# Restore original kinematics 
+# Uninstall
 ```
 bash ~/klipper_hybrid_corexy/uninstall.sh
 ```
 
+# RatOS CustomPIOS Integration
+```
+bash ~/klipper_hybrid_corexy/ratos-update.sh
+```
+
 # Update
+**moonraker.conf**
 ```ini
 [update_manager Hybrid_CoreXY]
 type: git_repo
@@ -29,8 +35,12 @@ managed_services:
 ```
 
 # Inverted Hybrid CoreXY Kinematic
+**printer.cfg**
 ```ini
-[hybrid_corexy]
+[printer]
+kinematics: ratos_hybrid_corexy
+
+[ratos_hybrid_corexy]
 inverted: true
 ```
 

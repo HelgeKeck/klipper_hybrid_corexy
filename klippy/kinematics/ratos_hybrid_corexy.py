@@ -9,12 +9,12 @@ import stepper
 from . import idex_modes
 
 # The hybrid-corexy kinematic is also known as Markforged kinematics
-class HybridCoreXYKinematics:
+class RatOSHybridCoreXYKinematics:
     def __init__(self, toolhead, config):
         self.printer = config.get_printer()
         self.inverted = False
-        if config.has_section('hybrid_corexy'):
-            hcxy_config = config.getsection('hybrid_corexy')
+        if config.has_section('ratos_hybrid_corexy'):
+            hcxy_config = config.getsection('ratos_hybrid_corexy')
             self.inverted = hcxy_config.getboolean('inverted', False)
         # itersolve parameters
         self.rails = [stepper.LookupMultiRail(config.getsection('stepper_' + n))
@@ -162,4 +162,4 @@ class HybridCoreXYKinematics:
         }
 
 def load_kinematics(toolhead, config):
-    return HybridCoreXYKinematics(toolhead, config)
+    return RatOSHybridCoreXYKinematics(toolhead, config)
