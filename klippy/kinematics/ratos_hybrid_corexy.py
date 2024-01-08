@@ -19,9 +19,6 @@ class RatOSHybridCoreXYKinematics:
         # itersolve parameters
         self.rails = [stepper.LookupMultiRail(config.getsection('stepper_' + n))
                       for n in 'xyz']
-        if not config.has_section('dual_carriage'):
-            self.rails[0].steppers.append(self.rails[1].steppers[0])
-            self.rails[1].steppers = self.rails[1].steppers[1:]
         for s in self.rails[0].get_steppers():
             self.rails[1].get_endstops()[0][0].add_stepper(s)
         if self.inverted == False:
